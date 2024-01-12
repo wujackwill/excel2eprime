@@ -19,7 +19,6 @@ split_basic <- function(path, col_name = NULL) {
   return(data)
 }
 
-
 colname <- function(data) {
   a <- a %>%
     mutate_all(~ replace_na(., " "))
@@ -30,7 +29,7 @@ colname <- function(data) {
 }
 
 
-split_12 <- function(path, col_name = NULL) {
+split_basic_12 <- function(path, col_name = NULL) {
   check_install_readxl()
   check_install_tidyverse()
   a <- read_excel(path, col_name = col_name)
@@ -62,7 +61,9 @@ split_12 <- function(path, col_name = NULL) {
   }
 }
 
-split_22 <- function(path, col_name = NULL) {
+split_basic_22 <- function(path, col_name = NULL) {
+  check_install_readxl()
+  check_install_tidyverse()
   a <- read_excel(path, col_name = col_name)
 
   words <- str_split(a$A, " ")
@@ -196,7 +197,9 @@ split_22 <- function(path, col_name = NULL) {
 }
 
 
-split_222 <- function(path, col_name = NULL) {
+split_basic_222 <- function(path, col_name = NULL) {
+  check_install_readxl()
+  check_install_tidyverse()
   a <- read_excel(path, col_name = col_name)
 
   words <- str_split(a$A, " ")
