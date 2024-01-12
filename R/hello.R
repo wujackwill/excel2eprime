@@ -77,6 +77,8 @@ split_22 <- function(path, col_name = NULL) {
       index <- index + 1
     }
   }
+  a <- a %>% slice(-1)
+
   #------------------------
   n <- 1
   line1_copy_list <- list()
@@ -84,8 +86,8 @@ split_22 <- function(path, col_name = NULL) {
   while (n <= nrow(a)) {
     line1 <- a %>% slice(n)
 
-    col1 <- colname(line1)[1]
-    col2 <- colname(line1)[2]
+    col1 <- colname(line1)[2]
+    col2 <- colname(line1)[3]
 
     control1 <- str_split(line1[[col1]][1], "/")
     control2 <- str_split(line1[[col2]][1], "/")
@@ -103,7 +105,9 @@ split_22 <- function(path, col_name = NULL) {
   }
   con1 <- bind_rows(line1_copy_list)
 
-  con1 <- con1 %>% slice(-1)
+  con1
+
+
 
   #-------------------------------------------------
 
@@ -113,8 +117,8 @@ split_22 <- function(path, col_name = NULL) {
   while (m <= nrow(a)) {
     line2 <- a %>% slice(m)
 
-    col1 <- colname(line2)[1]
-    col2 <- colname(line2)[2]
+    col1 <- colname(line2)[2]
+    col2 <- colname(line2)[3]
 
     control1 <- str_split(line2[[col1]][1], "/")
     control2 <- str_split(line2[[col2]][1], "/")
@@ -132,8 +136,6 @@ split_22 <- function(path, col_name = NULL) {
   }
   con2 <- bind_rows(line2_copy_list)
 
-  con2 <- con2 %>% slice(-1)
-
   #-----------------------------------------------
 
   c <- 1
@@ -142,8 +144,8 @@ split_22 <- function(path, col_name = NULL) {
   while (c <= nrow(a)) {
     line3 <- a %>% slice(c)
 
-    col1 <- colname(line3)[1]
-    col2 <- colname(line3)[2]
+    col1 <- colname(line3)[2]
+    col2 <- colname(line3)[3]
 
     control1 <- str_split(line3[[col1]][1], "/")
     control2 <- str_split(line3[[col2]][1], "/")
@@ -162,8 +164,6 @@ split_22 <- function(path, col_name = NULL) {
 
   con3 <- bind_rows(line3_copy_list)
 
-  con3 <- con3 %>% slice(-1)
-
 
 
   #------------------------------
@@ -174,8 +174,8 @@ split_22 <- function(path, col_name = NULL) {
   while (d <= nrow(a)) {
     line4 <- a %>% slice(d)
 
-    col1 <- colname(line4)[1]
-    col2 <- colname(line4)[2]
+    col1 <- colname(line4)[2]
+    col2 <- colname(line4)[3]
 
     control1 <- str_split(line4[[col1]][1], "/")
     control2 <- str_split(line4[[col2]][1], "/")
@@ -194,5 +194,6 @@ split_22 <- function(path, col_name = NULL) {
 
   con4 <- bind_rows(line4_copy_list)
 
-  con4 <- con4 %>% slice(-1)
+  return (con1)
+
 }
