@@ -29,13 +29,10 @@ colname <- function(data) {
 }
 
 
-split_basic_12 <- function(path, col_name = NULL) {
-  check_install_readxl()
-  check_install_tidyverse()
+split_12 <- function(path, col_name = NULL) {
   a <- read_excel(path, col_name = col_name)
 
   words <- str_split(a$A, " ")
-  words
 
   for  (m in seq_len(nrow(a))) {
     w <- 1
@@ -47,21 +44,65 @@ split_basic_12 <- function(path, col_name = NULL) {
       index <- index + 1
     }
   }
-  for (n in colname(data)) {
-    b <- str_split(a[[n]], "/")
-    m <- 1
+  a <- a %>% slice(-1)
 
-    while (m <= length(b)) {
-      a[[n]] <- b[[1]][m]
+  #------------------------
+  n <- 1
+  line1_copy_list <- list()
 
-      conname <- paste("con", m, sep = "")
-      assign(conname, a)
-      m <- m + 1
-    }
+  while (n <= nrow(a)) {
+    line1 <- a %>% slice(n)
+
+    col1 <- colname(line1)[2]
+
+    control1 <- str_split(line1[[col1]][1], "/")
+
+    # Create a copy of the slice
+    line1_copy <- line1
+
+    line1_copy[[col1]][1] <- control1[[1]][1]
+
+    # Store the result in the list
+    line1_copy_list[[n]] <- line1_copy
+
+    n <- n + 1
   }
+  con1 <- bind_rows(line1_copy_list)
+
+  con1
+
+
+
+  #-------------------------------------------------
+
+  m <- 1
+  line2_copy_list <- list()
+
+  while (m <= nrow(a)) {
+    line2 <- a %>% slice(m)
+
+    col1 <- colname(line2)[2]
+
+    control1 <- str_split(line2[[col1]][1], "/")
+
+    # Create a copy of the slice
+    line2_copy <- line2
+
+    line2_copy[[col1]][1] <- control1[[1]][1]
+
+    # Store the result in the list
+    line2_copy_list[[m]] <- line2_copy
+
+    m <- m + 1
+  }
+  con2 <- bind_rows(line2_copy_list)
+  return (con1)
 }
 
-split_basic_22 <- function(path, col_name = NULL) {
+
+
+
+split_22 <- function(path, col_name = NULL) {
   check_install_readxl()
   check_install_tidyverse()
   a <- read_excel(path, col_name = col_name)
@@ -197,7 +238,7 @@ split_basic_22 <- function(path, col_name = NULL) {
 }
 
 
-split_basic_222 <- function(path, col_name = NULL) {
+split_222 <- function(path, col_name = NULL) {
   check_install_readxl()
   check_install_tidyverse()
   a <- read_excel(path, col_name = col_name)
