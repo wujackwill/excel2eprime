@@ -6,13 +6,7 @@ check_install_readxl <<- function() {
   }
 }
 
-check_install_tidyverse <<- function() {
-  if (!requireNamespace("tidyverse", quietly = TRUE)) {
-    message("Installing 'tidyverse' package...")
-    install.packages("tidyverse")
-    message("The 'tidyverse' package has been installed.")
-  }
-}
+
 
 check_file <<- function(path) {
   if (!is_string(path)) {

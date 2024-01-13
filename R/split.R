@@ -1,9 +1,29 @@
-split_basic <- function(path, col_name = NULL) {
-  check_install_readxl()
-  check_install_tidyverse()
-  data <- read_excel(path, col_name = col_name)
+#' @importFrom utils data
+#' @import dplyr
+#' @import stringr
+#' @importFrom magrittr %>%
+#' @import readxl
+#' @import tidyr
+NULL
 
-  words <- str_split(data[[col_name]], " ")
+
+
+#' Split the basic sentence without "/"
+#'
+#' @param path Path to the file
+#' @param col_names column names contains the experiment sentence
+#'
+#' @return tibble
+#' @export
+#'
+#' @examples split_basic("D:\\personal\\excel2ePrime\\R\\basic.xlsx", "A")
+
+
+split_basic <- function(path, col_names = TRUE) {
+
+  data <- read_excel(path, col_names = col_names)
+
+  words <- str_split(data[[col_names]], " ")
 
   for  (m in seq_len(nrow(data))) {
     w <- 1
@@ -19,20 +39,22 @@ split_basic <- function(path, col_name = NULL) {
   return(data)
 }
 
-colname <- function(data) {
-  a <- a %>%
-    mutate_all(~ replace_na(., " "))
-  columns_with_slash <- a %>%
-    select(, -1) %>%
-    select(where(~ any(str_detect(., "/"))))
-  return(colnames(columns_with_slash))
-}
 
 
-split_12 <- function(path, col_name = NULL) {
-  a <- read_excel(path, col_name = col_name)
+#' Split sentence of the 1 * 2 experiment design
+#'
+#' @param path Path to the file
+#' @param col_names column names contains the experiment sentence
+#'
+#' @return tibble
+#' @export
+#'
+#' @examples
+#' split_12("D:\\personal\\excel2ePrime\\R\\12.xlsx","A")
+split_12 <- function(path, col_names = TRUE) {
+  a <- read_excel(path, col_names = col_names)
 
-  words <- str_split(a$A, " ")
+  words <- str_split(a[[col_names]], " ")
 
   for  (m in seq_len(nrow(a))) {
     w <- 1
@@ -52,8 +74,13 @@ split_12 <- function(path, col_name = NULL) {
 
   while (n <= nrow(a)) {
     line1 <- a %>% slice(n)
+    line1 <- line1 %>%
+      mutate_all(~ replace_na(., " "))
+    columns_with_slash <- line1 %>%
+      select(where(~ any(str_detect(., "/"))))
+    colnames_contain <- colnames(columns_with_slash)
 
-    col1 <- colname(line1)[2]
+    col1 <- colnames_contain[2]
 
     control1 <- str_split(line1[[col1]][1], "/")
 
@@ -81,14 +108,21 @@ split_12 <- function(path, col_name = NULL) {
   while (m <= nrow(a)) {
     line2 <- a %>% slice(m)
 
-    col1 <- colname(line2)[2]
+    line2 <- line2 %>%
+      mutate_all(~ replace_na(., " "))
+    columns_with_slash <- line2 %>%
+      select(where(~ any(str_detect(., "/"))))
+    colnames_contain <- colnames(columns_with_slash)
+
+
+    col1 <- colnames_contain[2]
 
     control1 <- str_split(line2[[col1]][1], "/")
 
     # Create a copy of the slice
     line2_copy <- line2
 
-    line2_copy[[col1]][1] <- control1[[1]][1]
+    line2_copy[[col1]][1] <- control1[[1]][2]
 
     # Store the result in the list
     line2_copy_list[[m]] <- line2_copy
@@ -96,18 +130,27 @@ split_12 <- function(path, col_name = NULL) {
     m <- m + 1
   }
   con2 <- bind_rows(line2_copy_list)
-  return (con1)
+  return (con2)
 }
 
 
 
 
-split_22 <- function(path, col_name = NULL) {
-  check_install_readxl()
-  check_install_tidyverse()
-  a <- read_excel(path, col_name = col_name)
+#' Split sentence of the 2 * 2 experiment design
+#'
+#' @param path Path to the file
+#' @param col_names column names contains the experiment sentence
+#'
+#' @return tibble
+#' @export
+#'
+#' @examples
+#' split_22("D:\\personal\\excel2ePrime\\R\\22.xlsx","A")
+split_22 <- function(path, col_names = TRUE) {
 
-  words <- str_split(a$A, " ")
+  a <- read_excel(path, col_names = col_names)
+
+  words <- str_split(a[[col_names]], " ")
 
   for  (m in seq_len(nrow(a))) {
     w <- 1
@@ -128,8 +171,14 @@ split_22 <- function(path, col_name = NULL) {
   while (n <= nrow(a)) {
     line1 <- a %>% slice(n)
 
-    col1 <- colname(line1)[2]
-    col2 <- colname(line1)[3]
+    line1 <- line1 %>%
+      mutate_all(~ replace_na(., " "))
+    columns_with_slash <- line1 %>%
+      select(where(~ any(str_detect(., "/"))))
+    colnames_contain <- colnames(columns_with_slash)
+
+    col1 <- colnames_contain[2]
+    col2 <- colnames_contain[3]
 
     control1 <- str_split(line1[[col1]][1], "/")
     control2 <- str_split(line1[[col2]][1], "/")
@@ -159,8 +208,15 @@ split_22 <- function(path, col_name = NULL) {
   while (m <= nrow(a)) {
     line2 <- a %>% slice(m)
 
-    col1 <- colname(line2)[2]
-    col2 <- colname(line2)[3]
+
+    line2 <- line2 %>%
+      mutate_all(~ replace_na(., " "))
+    columns_with_slash <- line2 %>%
+      select(where(~ any(str_detect(., "/"))))
+    colnames_contain <- colnames(columns_with_slash)
+
+    col1 <- colnames_contain[2]
+    col2 <- colnames_contain[3]
 
     control1 <- str_split(line2[[col1]][1], "/")
     control2 <- str_split(line2[[col2]][1], "/")
@@ -186,8 +242,14 @@ split_22 <- function(path, col_name = NULL) {
   while (c <= nrow(a)) {
     line3 <- a %>% slice(c)
 
-    col1 <- colname(line3)[2]
-    col2 <- colname(line3)[3]
+    line3 <- line3 %>%
+      mutate_all(~ replace_na(., " "))
+    columns_with_slash <- line3 %>%
+      select(where(~ any(str_detect(., "/"))))
+    colnames_contain <- colnames(columns_with_slash)
+
+    col1 <- colnames_contain[2]
+    col2 <- colnames_contain[3]
 
     control1 <- str_split(line3[[col1]][1], "/")
     control2 <- str_split(line3[[col2]][1], "/")
@@ -216,8 +278,15 @@ split_22 <- function(path, col_name = NULL) {
   while (d <= nrow(a)) {
     line4 <- a %>% slice(d)
 
-    col1 <- colname(line4)[2]
-    col2 <- colname(line4)[3]
+
+    line4 <- line4 %>%
+      mutate_all(~ replace_na(., " "))
+    columns_with_slash <- line4 %>%
+      select(where(~ any(str_detect(., "/"))))
+    colnames_contain <- colnames(columns_with_slash)
+
+    col1 <- colnames_contain[2]
+    col2 <- colnames_contain[3]
 
     control1 <- str_split(line4[[col1]][1], "/")
     control2 <- str_split(line4[[col2]][1], "/")
@@ -238,12 +307,24 @@ split_22 <- function(path, col_name = NULL) {
 }
 
 
-split_222 <- function(path, col_name = NULL) {
-  check_install_readxl()
-  check_install_tidyverse()
-  a <- read_excel(path, col_name = col_name)
 
-  words <- str_split(a$A, " ")
+
+
+#' Split sentence of the 2 * 2 * 2 experiment design
+#'
+#' @param path Path to the file
+#' @param col_names column names contains the experiment sentence
+#'
+#' @return tibble
+#' @export
+#'
+#' @examples
+#' split_222("D:\\personal\\excel2ePrime\\R\\222.xlsx","A")
+split_222 <- function(path, col_names = TRUE) {
+
+  a <- read_excel(path, col_names = col_names)
+
+  words <- str_split(a[[col_names]], " ")
 
   for  (m in seq_len(nrow(a))) {
     w <- 1
@@ -264,9 +345,15 @@ split_222 <- function(path, col_name = NULL) {
   while (n <= nrow(a)) {
     line1 <- a %>% slice(n)
 
-    col1 <- colname(line1)[2]
-    col2 <- colname(line1)[3]
-    col3 <- colname(line1)[4]
+    line1 <- line1 %>%
+      mutate_all(~ replace_na(., " "))
+    columns_with_slash <- line1 %>%
+      select(where(~ any(str_detect(., "/"))))
+    colnames_contain <- colnames(columns_with_slash)
+
+    col1 <- colnames_contain[2]
+    col2 <- colnames_contain[3]
+    col3 <- colnames_contain[4]
 
     control1 <- str_split(line1[[col1]][1], "/")
     control2 <- str_split(line1[[col2]][1], "/")
@@ -296,9 +383,15 @@ split_222 <- function(path, col_name = NULL) {
   while (m <= nrow(a)) {
     line2 <- a %>% slice(m)
 
-    col1 <- colname(line2)[2]
-    col2 <- colname(line2)[3]
-    col3 <- colname(line2)[4]
+    line2 <- line2 %>%
+      mutate_all(~ replace_na(., " "))
+    columns_with_slash <- line2 %>%
+      select(where(~ any(str_detect(., "/"))))
+    colnames_contain <- colnames(columns_with_slash)
+
+    col1 <- colnames_contain[2]
+    col2 <- colnames_contain[3]
+    col3 <- colnames_contain[4]
 
     control1 <- str_split(line2[[col1]][1], "/")
     control2 <- str_split(line2[[col2]][1], "/")
@@ -326,9 +419,15 @@ split_222 <- function(path, col_name = NULL) {
   while (c <= nrow(a)) {
     line3 <- a %>% slice(c)
 
-    col1 <- colname(line3)[2]
-    col2 <- colname(line3)[3]
-    col3 <- colname(line3)[4]
+    line3 <- line3 %>%
+      mutate_all(~ replace_na(., " "))
+    columns_with_slash <- line3 %>%
+      select(where(~ any(str_detect(., "/"))))
+    colnames_contain <- colnames(columns_with_slash)
+
+    col1 <- colnames_contain[2]
+    col2 <- colnames_contain[3]
+    col3 <- colnames_contain[4]
 
     control1 <- str_split(line3[[col1]][1], "/")
     control2 <- str_split(line3[[col2]][1], "/")
@@ -359,9 +458,15 @@ split_222 <- function(path, col_name = NULL) {
   while (d <= nrow(a)) {
     line4 <- a %>% slice(d)
 
-    col1 <- colname(line4)[2]
-    col2 <- colname(line4)[3]
-    col3 <- colname(line4)[4]
+    line4 <- line4 %>%
+      mutate_all(~ replace_na(., " "))
+    columns_with_slash <- line4 %>%
+      select(where(~ any(str_detect(., "/"))))
+    colnames_contain <- colnames(columns_with_slash)
+
+    col1 <- colnames_contain[2]
+    col2 <- colnames_contain[3]
+    col3 <- colnames_contain[4]
 
     control1 <- str_split(line4[[col1]][1], "/")
     control2 <- str_split(line4[[col2]][1], "/")
@@ -389,9 +494,15 @@ split_222 <- function(path, col_name = NULL) {
   while (e <= nrow(a)) {
     line5 <- a %>% slice(e)
 
-    col1 <- colname(line5)[2]
-    col2 <- colname(line5)[3]
-    col3 <- colname(line5)[4]
+    line5 <- line5 %>%
+      mutate_all(~ replace_na(., " "))
+    columns_with_slash <- line5 %>%
+      select(where(~ any(str_detect(., "/"))))
+    colnames_contain <- colnames(columns_with_slash)
+
+    col1 <- colnames_contain[2]
+    col2 <- colnames_contain[3]
+    col3 <- colnames_contain[4]
 
     control1 <- str_split(line5[[col1]][1], "/")
     control2 <- str_split(line5[[col2]][1], "/")
@@ -419,9 +530,16 @@ split_222 <- function(path, col_name = NULL) {
   while (f <= nrow(a)) {
     line6 <- a %>% slice(f)
 
-    col1 <- colname(line6)[2]
-    col2 <- colname(line6)[3]
-    col3 <- colname(line6)[4]
+
+    line6 <- line6 %>%
+      mutate_all(~ replace_na(., " "))
+    columns_with_slash <- line6 %>%
+      select(where(~ any(str_detect(., "/"))))
+    colnames_contain <- colnames(columns_with_slash)
+
+    col1 <- colnames_contain[2]
+    col2 <- colnames_contain[3]
+    col3 <- colnames_contain[4]
 
     control1 <- str_split(line6[[col1]][1], "/")
     control2 <- str_split(line6[[col2]][1], "/")
@@ -449,9 +567,15 @@ split_222 <- function(path, col_name = NULL) {
   while (g <= nrow(a)) {
     line7 <- a %>% slice(g)
 
-    col1 <- colname(line7)[2]
-    col2 <- colname(line7)[3]
-    col3 <- colname(line7)[4]
+    line7 <- line7 %>%
+      mutate_all(~ replace_na(., " "))
+    columns_with_slash <- line7 %>%
+      select(where(~ any(str_detect(., "/"))))
+    colnames_contain <- colnames(columns_with_slash)
+
+    col1 <- colnames_contain[2]
+    col2 <- colnames_contain[3]
+    col3 <- colnames_contain[4]
 
     control1 <- str_split(line7[[col1]][1], "/")
     control2 <- str_split(line7[[col2]][1], "/")
@@ -479,9 +603,16 @@ split_222 <- function(path, col_name = NULL) {
   while (h <= nrow(a)) {
     line8 <- a %>% slice(h)
 
-    col1 <- colname(line8)[2]
-    col2 <- colname(line8)[3]
-    col3 <- colname(line8)[4]
+
+    line8 <- line8 %>%
+      mutate_all(~ replace_na(., " "))
+    columns_with_slash <- line8 %>%
+      select(where(~ any(str_detect(., "/"))))
+    colnames_contain <- colnames(columns_with_slash)
+
+    col1 <- colnames_contain[2]
+    col2 <- colnames_contain[3]
+    col3 <- colnames_contain[4]
 
     control1 <- str_split(line8[[col1]][1], "/")
     control2 <- str_split(line8[[col2]][1], "/")
