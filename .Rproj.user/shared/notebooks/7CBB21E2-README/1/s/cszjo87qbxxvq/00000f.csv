@@ -1,4 +1,3 @@
-"0","split_222(""D:\\personal\\excel2ePrime\\R\\222.xlsx"",""A"")"
-"2","Warning: internal error -3 in R_decompress1"
-"2","错误: lazy-load database 'C:/Users/jackwill/AppData/Local/R/win-library/4.3/excel2ePrime/R/excel2ePrime.rdb' is corrupt
-"
+"0","data <- split_22(""D:\\personal\\excel2ePrime\\R\\22.xlsx"",""A"")"
+"0",""
+"0","data$con1"
