@@ -130,7 +130,7 @@ split_12 <- function(path, col_names = TRUE) {
     m <- m + 1
   }
   con2 <- bind_rows(line2_copy_list)
-  return (con2)
+  return(list(con1, con2))
 }
 
 
@@ -304,7 +304,7 @@ split_22 <- function(path, col_names = TRUE) {
   }
 
   con4 <- bind_rows(line4_copy_list)
-  return (con1)
+  return(list(con1, con2, con3, con4))
 }
 
 
@@ -633,5 +633,6 @@ split_222 <- function(path, col_names = TRUE) {
   }
 
   con7 <- bind_rows(line8_copy_list)
-  return (con7)
+
+  return(list(con1, con2, con3, con4, con5, con6, con7, con8))
 }
