@@ -30,7 +30,9 @@ library(excel2ePrime)
 Split experiment materials of different design
 
 ``` r
-split_basic("D:\\personal\\excel2ePrime\\R\\basic.xlsx","A")
+data <- split_basic("D:\\personal\\excel2ePrime\\R\\basic.xlsx","A")
+
+data
 #> # A tibble: 2 × 10
 #>   A                        w1    w2    w3    w4    w5    w6    w7    w8    w9   
 #>   <chr>                    <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr>
