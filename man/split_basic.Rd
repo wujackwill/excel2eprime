@@ -18,5 +18,5 @@ tibble
 Split the basic sentence without "/"
 }
 \examples{
-split_basic("D:\\\\personal\\\\excel2ePrime\\\\inst\\\\basic.xlsx", "A")
+split_basic(excel2eprime_example("basic.xlsx"), "A")
 }
