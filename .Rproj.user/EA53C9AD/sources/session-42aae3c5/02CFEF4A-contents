@@ -6,7 +6,23 @@
 #' @import tidyr
 NULL
 
-
+#' Get path to excel2eprime example
+#'
+#' excel2eprime comes bundled with some example files in its `inst/extdata`
+#' directory. This function make them easy to access.
+#'
+#' @param path Name of file. If `NULL`, the example files will be listed.
+#' @export
+#' @examples
+#' excel2eprime_example()
+#' excel2eprime_example("basic.xlsx")
+excel2eprime_example <- function(path = NULL) {
+  if (is.null(path)) {
+    dir(system.file("extdata", package = "excel2eprime"))
+  } else {
+    system.file("extdata", path, package = "excel2eprime", mustWork = TRUE)
+  }
+}
 
 #' Split the basic sentence without "/"
 #'
@@ -16,7 +32,7 @@ NULL
 #' @return tibble
 #' @export
 #'
-#' @examples split_basic("D:\\personal\\excel2ePrime\\inst\\basic.xlsx", "A")
+#' @examples split_basic(excel2eprime_example("basic.xlsx"), "A")
 
 
 split_basic <- function(path, col_names = TRUE) {
@@ -49,8 +65,7 @@ split_basic <- function(path, col_names = TRUE) {
 #' @return tibble
 #' @export
 #'
-#' @examples
-#' split_12("D:\\personal\\excel2ePrime\\inst\\12.xlsx","A")
+#' @examples split_12(excel2eprime_example("12.xlsx"), "A")
 split_12 <- function(path, col_names = TRUE) {
   a <- read_excel(path, col_names = col_names)
 
@@ -145,7 +160,7 @@ split_12 <- function(path, col_names = TRUE) {
 #' @export
 #'
 #' @examples
-#' split_22("D:\\personal\\excel2ePrime\\inst\\22.xlsx","A")
+#' split_22(excel2eprime_example("22.xlsx"),"A")
 split_22 <- function(path, col_names = TRUE) {
 
   a <- read_excel(path, col_names = col_names)
@@ -320,7 +335,7 @@ split_22 <- function(path, col_names = TRUE) {
 #' @export
 #'
 #' @examples
-#' split_222("D:\\personal\\excel2ePrime\\inst\\222.xlsx","A")
+#' split_222(excel2eprime_example("222.xlsx"),"A")
 split_222 <- function(path, col_names = TRUE) {
 
   a <- read_excel(path, col_names = col_names)

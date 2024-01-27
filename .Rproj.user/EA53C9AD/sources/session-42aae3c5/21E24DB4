@@ -1,9 +1,9 @@
 {
     "id": "21E24DB4",
-    "path": "D:/personal/excel2ePrime/README.Rmd",
+    "path": "D:/personal/excel2eprime/README.Rmd",
     "project_path": "README.Rmd",
     "type": "r_markdown",
-    "hash": "853087151",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1705119275953.0,
@@ -12,16 +12,16 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "60,51",
-        "scrollLine": "56",
+        "cursorPosition": "36,15",
+        "scrollLine": "0",
         "marks": "<:64,0\n>:64,0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1706340614,
+    "lastKnownWriteTime": 1706342442,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1706340614334,
+    "last_content_update": 1706342442196,
     "read_only": false,
     "read_only_alternatives": []
 }
