@@ -6,7 +6,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of excel2eprime is to provide a easy to split experiment
+The goal of excel2eprime is to provide a easy way to split experiment
 sentences by different factors.
 
 ## Installation
@@ -30,7 +30,7 @@ library(excel2eprime)
 Split experiment materials of different design
 
 ``` r
-data <- split_basic("D:\\personal\\excel2eprime\\inst\\basic.xlsx","A")
+data <- split_basic("D:\\personal\\excel2eprime\\inst\\extdata\\basic.xlsx","A")
 
 data
 #> # A tibble: 2 × 10
@@ -41,7 +41,7 @@ data
 ```
 
 ``` r
-data <- split_12("D:\\personal\\excel2eprime\\inst\\12.xlsx","A")
+data <- split_12("D:\\personal\\excel2eprime\\inst\\extdata\\12.xlsx","A")
 
 data$con1
 #> # A tibble: 2 × 10
@@ -52,7 +52,7 @@ data$con1
 ```
 
 ``` r
-data <- split_22("D:\\personal\\excel2eprime\\inst\\22.xlsx","A")
+data <- split_22("D:\\personal\\excel2eprime\\inst\\extdata\\22.xlsx","A")
 
 data$con1
 #> # A tibble: 2 × 10
@@ -63,7 +63,7 @@ data$con1
 ```
 
 ``` r
-data <- split_222("D:\\personal\\excel2eprime\\inst\\222.xlsx","A")
+data <- split_222("D:\\personal\\excel2eprime\\inst\\extdata\\222.xlsx","A")
 
 data$con1
 #> # A tibble: 2 × 10
