@@ -16,7 +16,7 @@ NULL
 #' @return tibble
 #' @export
 #'
-#' @examples split_basic("D:\\personal\\excel2ePrime\\R\\basic.xlsx", "A")
+#' @examples split_basic("D:\\personal\\excel2ePrime\\inst\\basic.xlsx", "A")
 
 
 split_basic <- function(path, col_names = TRUE) {
@@ -50,7 +50,7 @@ split_basic <- function(path, col_names = TRUE) {
 #' @export
 #'
 #' @examples
-#' split_12("D:\\personal\\excel2ePrime\\R\\12.xlsx","A")
+#' split_12("D:\\personal\\excel2ePrime\\inst\\12.xlsx","A")
 split_12 <- function(path, col_names = TRUE) {
   a <- read_excel(path, col_names = col_names)
 
@@ -145,7 +145,7 @@ split_12 <- function(path, col_names = TRUE) {
 #' @export
 #'
 #' @examples
-#' split_22("D:\\personal\\excel2ePrime\\R\\22.xlsx","A")
+#' split_22("D:\\personal\\excel2ePrime\\inst\\22.xlsx","A")
 split_22 <- function(path, col_names = TRUE) {
 
   a <- read_excel(path, col_names = col_names)
@@ -320,7 +320,7 @@ split_22 <- function(path, col_names = TRUE) {
 #' @export
 #'
 #' @examples
-#' split_222("D:\\personal\\excel2ePrime\\R\\222.xlsx","A")
+#' split_222("D:\\personal\\excel2ePrime\\inst\\222.xlsx","A")
 split_222 <- function(path, col_names = TRUE) {
 
   a <- read_excel(path, col_names = col_names)

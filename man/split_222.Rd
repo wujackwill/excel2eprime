@@ -18,5 +18,5 @@ tibble
 Split sentence of the 2 * 2 * 2 experiment design
 }
 \examples{
-split_222("D:\\\\personal\\\\excel2ePrime\\\\R\\\\222.xlsx","A")
+split_222("D:\\\\personal\\\\excel2ePrime\\\\inst\\\\222.xlsx","A")
 }

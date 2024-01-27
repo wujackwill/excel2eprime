@@ -30,7 +30,7 @@ library(excel2ePrime)
 Split experiment materials of different design
 
 ``` r
-data <- split_basic("D:\\personal\\excel2ePrime\\R\\basic.xlsx","A")
+data <- split_basic("D:\\personal\\excel2ePrime\\inst\\basic.xlsx","A")
 
 data
 #> # A tibble: 2 × 10
@@ -41,7 +41,7 @@ data
 ```
 
 ``` r
-data <- split_12("D:\\personal\\excel2ePrime\\R\\12.xlsx","A")
+data <- split_12("D:\\personal\\excel2ePrime\\inst\\12.xlsx","A")
 
 data$con1
 #> # A tibble: 2 × 10
@@ -52,7 +52,7 @@ data$con1
 ```
 
 ``` r
-data <- split_22("D:\\personal\\excel2ePrime\\R\\22.xlsx","A")
+data <- split_22("D:\\personal\\excel2ePrime\\inst\\22.xlsx","A")
 
 data$con1
 #> # A tibble: 2 × 10
@@ -63,7 +63,7 @@ data$con1
 ```
 
 ``` r
-data <- split_222("D:\\personal\\excel2ePrime\\R\\222.xlsx","A")
+data <- split_222("D:\\personal\\excel2ePrime\\inst\\222.xlsx","A")
 
 data$con1
 #> # A tibble: 2 × 10
