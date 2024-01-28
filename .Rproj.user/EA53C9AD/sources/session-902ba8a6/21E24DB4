@@ -1,27 +1,27 @@
 {
-    "id": "02CFEF4A",
-    "path": "D:/personal/excel2eprime/R/split.R",
-    "project_path": "R/split.R",
-    "type": "r_source",
+    "id": "21E24DB4",
+    "path": "D:/personal/excel2eprime/README.Rmd",
+    "project_path": "README.Rmd",
+    "type": "r_markdown",
     "hash": "0",
     "contents": "",
     "dirty": false,
-    "created": 1705119257768.0,
+    "created": 1705119275953.0,
     "source_on_save": false,
-    "relative_order": 1,
+    "relative_order": 2,
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "292,24",
+        "cursorPosition": "58,0",
         "scrollLine": "0",
-        "marks": "<:10,3\n>:10,13"
+        "marks": "<:65,0\n>:65,0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1706345799,
+    "lastKnownWriteTime": 1706350901,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1706345799601,
+    "last_content_update": 1706350901936,
     "read_only": false,
     "read_only_alternatives": []
 }
