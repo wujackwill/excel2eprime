@@ -1,7 +1,7 @@
 Package: excel2eprime
 Type: Package
-Title: Split Sentences by factors with R
-Version: 0.2.0
+Title: Split Sentences by Factors
+Version: 0.3.0
 Author: Jack Will
 Maintainer: Jack Will <wujackwill@outlook.com>
 Description:  Split experiment sentences by different experiment design give by the user and the result can be used in 'E-prime'(<https://pstnet.com/products/e-prime/>).
