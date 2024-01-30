@@ -1,0 +1,26 @@
+{
+    "id": "1B384D0D",
+    "path": "D:/personal/excel2eprime/man/split_basic.Rd",
+    "project_path": "man/split_basic.Rd",
+    "type": "r_doc",
+    "hash": "168601672",
+    "contents": "",
+    "dirty": false,
+    "created": 1706593433719.0,
+    "source_on_save": false,
+    "relative_order": 8,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1706593264,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1706593264,
+    "read_only": true,
+    "read_only_alternatives": [
+        "R/split.R"
+    ]
+}

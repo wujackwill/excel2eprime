@@ -12,6 +12,7 @@ NULL
 #' directory. This function make them easy to access.
 #'
 #' @param path Name of file. If `NULL`, the example files will be listed.
+#' @return a character vector of paths to the example files.
 #' @export
 #' @examples
 #' excel2eprime_example()
@@ -27,9 +28,9 @@ excel2eprime_example <- function(path = NULL) {
 #' Split the basic sentence without "/"
 #'
 #' @param path Path to the file
-#' @param col_names column names contains the experiment sentence
+#' @param col_names column names contains the experiment sentences
 #'
-#' @return tibble
+#' @return This function simply returns the tibble that only splits the sentences by space.
 #' @export
 #'
 #' @examples split_basic(excel2eprime_example("basic.xlsx"), "A")
@@ -60,9 +61,12 @@ split_basic <- function(path, col_names = TRUE) {
 #' Split sentence of the 1 * 2 experiment design
 #'
 #' @param path Path to the file
-#' @param col_names column names contains the experiment sentence
+#' @param col_names column names contains the experiment sentences
 #'
-#' @return tibble
+#' @return This function is for the experiment design of only one main factor that has two factors.
+#' It will firstly automatically splits the sentences by space and then divide
+#' the sentences into two parts by the character "/". The first part will be stored in the column
+#' of the return tibble named "con1" and the second part will be stored in the column named "con2".
 #' @export
 #'
 #' @examples split_12(excel2eprime_example("12.xlsx"), "A")
@@ -154,9 +158,13 @@ split_12 <- function(path, col_names = TRUE) {
 #' Split sentence of the 2 * 2 experiment design
 #'
 #' @param path Path to the file
-#' @param col_names column names contains the experiment sentence
+#' @param col_names column names contains the experiment sentences
 #'
-#' @return tibble
+#' @return This function is for the experiment design of two main factors that has two factors each.
+#' It will firstly automatically splits the sentences by space and then divide
+#' the sentences into four parts by the character "/". The first part will be stored in the column
+#' of the return tibble named "con1"
+#' and the second part will be stored in the column named "con2", etc...
 #' @export
 #'
 #' @examples
@@ -329,9 +337,13 @@ split_22 <- function(path, col_names = TRUE) {
 #' Split sentence of the 2 * 2 * 2 experiment design
 #'
 #' @param path Path to the file
-#' @param col_names column names contains the experiment sentence
+#' @param col_names column names contains the experiment sentences
 #'
-#' @return tibble
+#' @return This function is for the experiment design of three main factors that has two factors each.
+#' It will firstly automatically splits the sentences by space and then divide
+#' the sentences into eight parts by the character "/". The first part will be stored in the column
+#' of the return tibble named "con1"
+#' and the second part will be stored in the column named "con2", etc...
 #' @export
 #'
 #' @examples
