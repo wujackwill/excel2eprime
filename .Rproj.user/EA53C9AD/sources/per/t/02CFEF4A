@@ -3,7 +3,7 @@
     "path": "D:/personal/excel2eprime/R/split.R",
     "project_path": "R/split.R",
     "type": "r_source",
-    "hash": "0",
+    "hash": "4192876153",
     "contents": "",
     "dirty": false,
     "created": 1705119257768.0,
@@ -12,16 +12,16 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "292,24",
-        "scrollLine": "0",
+        "cursorPosition": "339,66",
+        "scrollLine": "334",
         "marks": "<:0,0\n>:0,0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1706346675,
+    "lastKnownWriteTime": 1706593264,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1706346675,
+    "last_content_update": 1706593264307,
     "read_only": false,
     "read_only_alternatives": []
 }

@@ -1,0 +1,26 @@
+{
+    "id": "17E22FAB",
+    "path": "D:/personal/excel2eprime/man/split_222.Rd",
+    "project_path": "man/split_222.Rd",
+    "type": "r_doc",
+    "hash": "557414324",
+    "contents": "",
+    "dirty": false,
+    "created": 1706593413474.0,
+    "source_on_save": false,
+    "relative_order": 7,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1706593264,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1706593264,
+    "read_only": true,
+    "read_only_alternatives": [
+        "R/split.R"
+    ]
+}
